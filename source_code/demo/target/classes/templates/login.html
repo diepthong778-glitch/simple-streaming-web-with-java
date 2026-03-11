@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" th:href="@{/stylesheet/login.css}">
+    <link rel="icon" th:href="@{/assets/popcorn.png}">
+</head>
+<body>
+<div class="container">
+    <div class="login-container">
+        <div class="login-info-container">
+            <h1 class="title">MOVIEX</h1>
+            <p>Welcome back</p>
+            <form class="inputs-container" th:action="@{/login}" method="post" th:object="${loginForm}">
+                <input class="input" type="text" th:field="*{username}" placeholder="Username"/>
+                <input class="input" type="password" th:field="*{password}" placeholder="Password"/>
+                <button class="btn" type="submit">Login</button>
+                <p class="error" th:if="${loginError}" th:text="${loginError}"></p>
+            </form>
+            <p>Don't have an account? <a th:href="@{/register}">Register</a></p>
+        </div>
+        <img th:src="@{/assets/netflix.jpg}" alt="banner">
+    </div>
+</div>
+</body>
+</html>

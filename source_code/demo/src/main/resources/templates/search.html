@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search</title>
+    <link rel="stylesheet" th:href="@{/stylesheet/main.css}">
+    <link rel="icon" th:href="@{/assets/popcorn.png}">
+</head>
+<body>
+<div class="container">
+    <div class="filter-bar">
+        <div class="filter-dropdowns"><h1 th:text="'Kết quả cho: ' + ${keyword}"></h1></div>
+        <div class="search-bar">
+            <form th:action="@{/search}" method="post">
+                <input type="search" name="ch" placeholder="Search movies...">
+                <button type="submit"><i class="fas fa-search"></i></button>
+            </form>
+        </div>
+        <div class="filter-radios">
+            <a th:href="@{/home}">Home</a>
+        </div>
+    </div>
+
+    <div class="movies-row">
+        <div class="card" th:each="m : ${results}">
+            <div class="card-head">
+                <img class="card-img" th:src="@{'/assets/images/' + ${m.imageName}}" th:alt="${m.title}">
+                <a th:href="${m.urlYoutube}">
+                    <div class="play-icon"><i class="fa-solid fa-play"></i></div>
+                </a>
+            </div>
+            <div class="card-body">
+                <a th:href="${m.urlYoutube}"><h3 class="card-title" th:text="${m.title}"></h3></a>
+                <div class="card-info">
+                    <span class="genre" th:text="${m.genre}"></span>
+                    <span class="year" th:text="${m.year}"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

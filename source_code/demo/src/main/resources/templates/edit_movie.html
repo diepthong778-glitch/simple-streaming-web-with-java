@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Movie</title>
+    <link rel="stylesheet" th:href="@{/stylesheet/app.css}">
+    <link rel="icon" th:href="@{/assets/popcorn.png}">
+</head>
+<body>
+<div class="container">
+    <h1>Edit Movie</h1>
+    <form th:action="@{'/admin/movies/' + ${movieForm.id}}" method="post" th:object="${movieForm}" class="form">
+        <label>Title
+            <input type="text" th:field="*{title}" required>
+        </label>
+        <label>Genre
+            <input type="text" th:field="*{genre}" required>
+        </label>
+        <label>Year
+            <input type="text" th:field="*{year}" required>
+        </label>
+        <label>Image filename
+            <input type="text" th:field="*{imageName}" required>
+        </label>
+        <label>Youtube URL
+            <input type="text" th:field="*{urlYoutube}" required>
+        </label>
+        <div class="actions">
+            <button type="submit" class="btn">Update</button>
+            <a class="btn btn-secondary" th:href="@{/admin}">Cancel</a>
+        </div>
+    </form>
+</div>
+</body>
+</html>

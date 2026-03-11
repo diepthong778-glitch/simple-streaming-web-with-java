@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Moviex: Home</title>
+    <link rel="stylesheet" th:href="@{/stylesheet/main.css}">
+    <link rel="icon" th:href="@{/assets/popcorn.png}">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:100,200,300,regular,500,600,700,800,900">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+</head>
+<body>
+<div class="container">
+    <main>
+        <section class="banner">
+            <div class="banner-card">
+                <img th:src="@{/assets/action.jpg}" alt="banner" class="banner-img">
+                <div class="card-content">
+                    <div class="card-info">
+                        <div class="genre"><span>Action</span></div>
+                        <div class="year"><span>2017</span></div>
+                        <div class="duration"><span>2h 2m</span></div>
+                    </div>
+                    <h2 class="card-title">John Wick: Chapter 2</h2>
+                </div>
+            </div>
+        </section>
+
+        <section class="movies">
+            <div class="filter-bar">
+                <div class="filter-dropdowns"><h1>MOVIEX</h1></div>
+                <div class="search-bar">
+                    <form th:action="@{/search}" method="post">
+                        <input type="search" name="ch" placeholder="Search movies...">
+                        <button type="submit"><i class="fas fa-search"></i></button>
+                    </form>
+                </div>
+                <div class="filter-radios">
+                    <a th:href="@{/logout}">Logout</a>
+                </div>
+            </div>
+
+            <div class="movies-grid">
+                <h1>Action</h1>
+                <div class="movies-row">
+                    <div class="card" th:each="m : ${actionList}">
+                        <div class="card-head">
+                            <img class="card-img" th:src="@{'/assets/images/' + ${m.imageName}}" th:alt="${m.title}">
+                            <a th:href="${m.urlYoutube}">
+                                <div class="play-icon"><i class="fa-solid fa-play"></i></div>
+                            </a>
+                        </div>
+                        <div class="card-body">
+                            <a th:href="${m.urlYoutube}"><h3 class="card-title" th:text="${m.title}"></h3></a>
+                            <div class="card-info">
+                                <span class="genre" th:text="${m.genre}"></span>
+                                <span class="year" th:text="${m.year}"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <h1>Adventure</h1>
+                <div class="movies-row">
+                    <div class="card" th:each="m : ${adventureList}">
+                        <div class="card-head">
+                            <img class="card-img" th:src="@{'/assets/images/' + ${m.imageName}}" th:alt="${m.title}">
+                            <a th:href="${m.urlYoutube}">
+                                <div class="play-icon"><i class="fa-solid fa-play"></i></div>
+                            </a>
+                        </div>
+                        <div class="card-body">
+                            <a th:href="${m.urlYoutube}"><h3 class="card-title" th:text="${m.title}"></h3></a>
+                            <div class="card-info">
+                                <span class="genre" th:text="${m.genre}"></span>
+                                <span class="year" th:text="${m.year}"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <h1>Family</h1>
+                <div class="movies-row">
+                    <div class="card" th:each="m : ${familyList}">
+                        <div class="card-head">
+                            <img class="card-img" th:src="@{'/assets/images/' + ${m.imageName}}" th:alt="${m.title}">
+                            <a th:href="${m.urlYoutube}">
+                                <div class="play-icon"><i class="fa-solid fa-play"></i></div>
+                            </a>
+                        </div>
+                        <div class="card-body">
+                            <a th:href="${m.urlYoutube}"><h3 class="card-title" th:text="${m.title}"></h3></a>
+                            <div class="card-info">
+                                <span class="genre" th:text="${m.genre}"></span>
+                                <span class="year" th:text="${m.year}"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <h1>Horror</h1>
+                <div class="movies-row">
+                    <div class="card" th:each="m : ${horrorList}">
+                        <div class="card-head">
+                            <img class="card-img" th:src="@{'/assets/images/' + ${m.imageName}}" th:alt="${m.title}">
+                            <a th:href="${m.urlYoutube}">
+                                <div class="play-icon"><i class="fa-solid fa-play"></i></div>
+                            </a>
+                        </div>
+                        <div class="card-body">
+                            <a th:href="${m.urlYoutube}"><h3 class="card-title" th:text="${m.title}"></h3></a>
+                            <div class="card-info">
+                                <span class="genre" th:text="${m.genre}"></span>
+                                <span class="year" th:text="${m.year}"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <h1>Thriller</h1>
+                <div class="movies-row">
+                    <div class="card" th:each="m : ${thrillerList}">
+                        <div class="card-head">
+                            <img class="card-img" th:src="@{'/assets/images/' + ${m.imageName}}" th:alt="${m.title}">
+                            <a th:href="${m.urlYoutube}">
+                                <div class="play-icon"><i class="fa-solid fa-play"></i></div>
+                            </a>
+                        </div>
+                        <div class="card-body">
+                            <a th:href="${m.urlYoutube}"><h3 class="card-title" th:text="${m.title}"></h3></a>
+                            <div class="card-info">
+                                <span class="genre" th:text="${m.genre}"></span>
+                                <span class="year" th:text="${m.year}"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+</div>
+</body>
+</html>

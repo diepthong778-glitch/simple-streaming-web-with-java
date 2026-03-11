@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin</title>
+    <link rel="stylesheet" th:href="@{/stylesheet/app.css}">
+    <link rel="icon" th:href="@{/assets/popcorn.png}">
+</head>
+<body>
+<div class="container">
+    <div class="header">
+        <h1>Admin Dashboard</h1>
+        <div class="actions">
+            <a class="btn" th:href="@{/admin/movies/new}">Add Movie</a>
+            <a class="btn btn-secondary" th:href="@{/home}">Home</a>
+        </div>
+    </div>
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Title</th>
+            <th>Genre</th>
+            <th>Year</th>
+            <th>Image</th>
+            <th>Youtube URL</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="m : ${movies}">
+            <td th:text="${m.title}"></td>
+            <td th:text="${m.genre}"></td>
+            <td th:text="${m.year}"></td>
+            <td th:text="${m.imageName}"></td>
+            <td><a th:href="${m.urlYoutube}" target="_blank">Link</a></td>
+            <td class="table-actions">
+                <a th:href="@{'/admin/movies/' + ${m.id} + '/edit'}">Edit</a>
+                <form th:action="@{'/admin/movies/' + ${m.id} + '/delete'}" method="post" style="display:inline">
+                    <button type="submit">Delete</button>
+                </form>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>
